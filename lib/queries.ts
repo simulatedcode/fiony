@@ -1,15 +1,7 @@
-import { client } from "./sanity";
-
-export async function getAbout() {
-  return client.fetch(`*[_type == "about"][0]{
-    bio,
-    "skills": skills[]->title,
-    email
-  }`);
-}
+import { client } from "@/sanity/lib/client";
 
 export async function getProjects() {
-  return client.fetch(`*[_type == "project"] | order(year desc) {
+  return await client.fetch(`*[_type == "project"] | order(_createdAt desc) {
     _id,
     title,
     category,
@@ -20,7 +12,7 @@ export async function getProjects() {
 }
 
 export async function getExperience() {
-  return client.fetch(`*[_type == "experience"] | order(startDate desc) {
+  return await client.fetch(`*[_type == "experience"] | order(startDate desc) {
     _id,
     role,
     company,
@@ -31,10 +23,19 @@ export async function getExperience() {
 }
 
 export async function getEducation() {
-  return client.fetch(`*[_type == "education"] | order(year desc) {
+  return await client.fetch(`*[_type == "education"] | order(year desc) {
     _id,
     degree,
     school,
     year
+  }`);
+}
+
+export async function getAbout() {
+  return await client.fetch(`*[_type == "about"][0] {
+    _id,
+    bio,
+    skills,
+    email
   }`);
 }

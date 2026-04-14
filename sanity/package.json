@@ -1,0 +1,21 @@
+{
+  "name": "fiony-studio",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "sanity dev",
+    "start": "sanity start",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "deploy-graphql": "sanity deploy-graphql"
+  },
+  "dependencies": {
+    "next-sanity": "^12.1.1",
+    "sanity": "^5.14.1",
+    "react": "^19",
+    "react-dom": "^19"
+  },
+  "devDependencies": {
+    "@sanity/cli": "^5.14.1"
+  }
+}

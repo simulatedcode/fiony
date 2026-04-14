@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
+import StyledComponentsRegistry from "./components/StyledComponentsRegistry";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,9 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="min-h-screen flex flex-col">
-        <Navigation />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <StyledComponentsRegistry>
+          <Navigation />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
