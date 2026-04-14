@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import StyledComponentsRegistry from "./components/StyledComponentsRegistry";
+import Preload from "./components/Preload/Preload";
+import PageTransitionProvider from "./components/PageTransition/PageTransitionProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -20,10 +22,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.variable} data-scroll-behavior="smooth">
       <body className="min-h-screen flex flex-col">
+        <Preload />
         <StyledComponentsRegistry>
-          {children}
+          <PageTransitionProvider>{children}</PageTransitionProvider>
         </StyledComponentsRegistry>
       </body>
     </html>
